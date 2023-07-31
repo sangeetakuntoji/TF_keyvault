@@ -18,7 +18,7 @@ resource "azurerm_key_vault" "newkeyvault" {
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = "cc8ddd51-545c-4b42-ae2e-09a169cfe80a"
+    object_id = "0fb3c072-eeae-46b8-bd94-ecd7a971e8cb"
 
     key_permissions = [
       "create",
