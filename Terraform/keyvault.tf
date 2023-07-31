@@ -8,7 +8,7 @@ terraform {
   }
 }
 # Resource group creation
-resource "azurerm_resource_group" "new-rg" {
+resource "azurerm_resource_group" "keyvault-rg" {
   name     = "keyvault-rg"
   location = "eastus"
 }
@@ -16,7 +16,7 @@ resource "azurerm_resource_group" "new-rg" {
 data "azurerm_client_config" "current" {}
 
 # creation of keyvault
-resource "azurerm_key_vault" "newkeyvault" {
+resource "azurerm_key_vault" "samplekeyvault" {
   name                       = "samplekeyvault"
   location                   = "eastus"
   resource_group_name        = "keyvault-rg"
@@ -43,9 +43,9 @@ resource "azurerm_key_vault" "newkeyvault" {
 }
 
 # create keyvault secrets
-resource "azurerm_key_vault_secret" "newsecret" {
+resource "azurerm_key_vault_secret" "newkeyvaultsecret" {
   name         = "newkeyvaultsecret"
   value        = "mysecret"
-  key_vault_id = azurerm_key_vault.newkeyvault.id
+  key_vault_id = azurerm_key_vault.samplekeyvault.id
 
 }
